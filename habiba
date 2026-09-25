@@ -1,5 +1,9 @@
-void Grayscale(){
-  for(int i=0;i<image.width;i++){
+#include <iostream>
+#include "Image_Class.h"
+using namespace std;
+
+void grayscale(Image& img){
+for(int i=0;i<image.width;i++){
         for(int j=0;j<image.height;j++){
             int avr=0;
             for(int k=0;k<3;k++){
@@ -12,23 +16,33 @@ void Grayscale(){
         }
     }    
 }
-
-void flip(){
-  Image image2(filename2);
+void flip(Image& img){
+Image image(filename2);
     Image imagenew(filename2);
-    cout<<"Do you want to flip it horizontally or vertically?"<<endl;
-                string type;
-                cin>>type;
-    for(int i=0 ;i<image2.width ;i++){
-        for(int j=0 ; j<image2.height ; j++){
+for(int i=0 ;i<image555.width ;i++){
+        for(int j=0 ; j<image555.height ; j++){
             for(int k=0; k<3 ;k++){
                 if(type=="horizontally"){
-                    imagenew(image2.width-1-i,j,k)=image2(i,j,k);
+                    image(image555.width-1-i,j,k)=image(i,j,k);
                 }
                 else{
-                    imagenew(i,image2.height-1-j,k)=image2(i,j,k);
+                    image(i,image555.height-1-j,k)=image(i,j,k);
                 }
             }
         }
     }
+}
+int main(){
+    string filename;
+    cout<<"please, enter your image name to make it gray"<<endl;
+    cin>>filename;
+
+    Image image(filename);
+    Image image555(filename2);      
+                
+    string filenameout;
+    cout<<"please, enter your new image name"<<endl;
+    cin>>filenameout;
+    image.saveImage(filenameout);
+    return 0;
 }
