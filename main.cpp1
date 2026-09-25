@@ -1,0 +1,22 @@
+#include "Image_Class.h"
+
+int main() {
+    Image image("building.jpg");
+
+    for (int x = 0; x < image.width; ++x) {
+        for (int y = 0; y < image.height; ++y) {
+            
+            
+                int avg = (image(x, y, 0) + image(x, y, 1) + image(x, y, 2)) / 3;
+                int val = (avg > 127) ? 255 : 0;
+                image(x,y,0)  = val;
+                image(x,y,1)  = val;
+                image(x,y,2)  = val;
+            
+        }
+    }
+
+    image.saveImage("building.png");
+
+    return 0;
+}
