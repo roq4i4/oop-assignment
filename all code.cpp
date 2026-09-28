@@ -39,6 +39,34 @@ Image imagenew = img;
     }
     img = imagenew;
 }
+//filter8
+void resizeFilter(Image & img) {
+
+
+
+
+    int newWidth, newHeight;
+
+    cout<<"Enter new width: ";
+    cin>>newWidth;
+
+    cout<<"Enter new height: ";
+    cin>>newHeight;
+
+    Image resized(newWidth, newHeight);
+
+    for (int i = 0; i < newWidth; i++) {
+        for (int j = 0; j < newHeight; j++) {
+
+            int X = i * img.width / newWidth;
+            int Y = j * img.height / newHeight;
+
+            for (int k = 0; k < 3; k++) {
+                resized(j, i, k) = img(Y, X, k);
+            }
+        }
+    }
+}
 
 // main functoin
 int main(){
@@ -52,6 +80,7 @@ int choice;
 cout<<"choice a filter:  "<<endl;
   cout<<"1. grayscale\n";
   cout<<"5. flip\n";
+  cout<<"8. resize\n" ;     
   cin>> choice;
 if(choice==1){
    grayscale_filter(img);  
@@ -59,6 +88,10 @@ if(choice==1){
 if(choice==5){
    flip_filter(img);
 }
+if (choice==8){
+        resizeFilter(img);
+}        
+        
 
 // take the new name
 string filenameout;
