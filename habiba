@@ -1,31 +1,29 @@
 #include <iostream>
-#include "image_class.h"
+#include "Image_Class.h"
+#include <string>
 using namespace std;
-
 int main(){
-    string filename2;
-    cout<<"please, enter your emage name: "<<endl;
-    cin>>filename2;
-    Image image2(filename2);
-    Image imagenew(filename2);
-    cout<<"Do you want to flip it horizontally or vertically?"<<endl;
-                string type;
-                cin>>type;
-    for(int i=0 ;i<image2.width ;i++){
-        for(int j=0 ; j<image2.height ; j++){
-            for(int k=0; k<3 ;k++){
-                if(type=="horizontally"){
-                    imagenew(image2.width-1-i,j,k)=image2(i,j,k);
-                }
-                else{
-                    imagenew(i,image2.height-1-j,k)=image2(i,j,k);
-                }
-            }
+    string filename;
+    cout<<"please, enter your image name to make it gray"<<endl;
+    cin>>filename;
+
+    Image image(filename);
+    for(int i=0;i<image.width;i++){
+        for(int j=0;j<image.height;j++){
+            int avr=0;
+            for(int k=0;k<3;k++){
+                avr+=image(i,j,k);
+            }    
+                avr=avr/3;
+              for(int k=0;k<3;k++){
+                    image(i,j,k)=avr;
+                  }    
         }
-    }
+    }     
+                
     string filenameout;
-    cout<<"please, enter your new image name "<<endl;
+    cout<<"please, enter your new image name"<<endl;
     cin>>filenameout;
-    imagenew.saveImage(filenameout);
+    image.saveImage(filenameout);
     return 0;
 }
