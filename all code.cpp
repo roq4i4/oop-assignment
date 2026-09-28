@@ -20,7 +20,7 @@ for(int i=0;i<img.width;i++){
 }
 
  //filter2
-        void blackAndWhite_filter(Image& img) {
+        void blackandWhite_filter(Image& img) {
 
     for (int x = 0; x < img.width; ++x) {
         for (int y = 0; y < img.height; ++y) {
