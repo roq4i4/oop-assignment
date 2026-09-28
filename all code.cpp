@@ -32,6 +32,25 @@ for(int i=0;i<img.width;i++){
             
         }
     }
+} 
+//filter4
+void frameFilter(Image & img) {
+
+    for (int i = 0; i < img.width; i++) {
+        for (int j = 0; j < img.height; j++) {
+            for (int k = 0; k < 3; k++) {
+                if (i < 30 || img.width - 30 < i ||
+                    img.height - 30 < j || j < 30) {
+                  if (i % 2 == 0 || j % 2 == 0) {
+                        img(j,i,k) = 255;
+                    }
+                    else {
+                        img(j,i,k) = 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // filter5
@@ -94,6 +113,7 @@ Image img(filename);
 int choice;
 cout<<"choice a filter:  "<<endl;
   cout<<"1. grayscale\n";
+  cout<<"4. frame\n" ;
   cout<<"5. flip\n";
   cout<<"8. resize\n" ;     
   cin>> choice;
@@ -109,6 +129,12 @@ if(choice==5){
 if (choice==8){
         resizeFilter(img);
 }        
+if (choice==4){
+        frameFilter(img);
+}  
+else{
+       cout<< "please enter a valid number!\n"
+}
         
 
 // take the new name
