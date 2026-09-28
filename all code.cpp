@@ -20,12 +20,10 @@ for(int i=0;i<img.width;i++){
 }
 
  //filter2
-        void blackandWhite_filter(Image& img) {
-
+    void blackandWhite_filter(Image& img) {
     for (int x = 0; x < img.width; ++x) {
         for (int y = 0; y < img.height; ++y) {
-            
-            
+                        
                 int avg = (img(x, y, 0) + img(x, y, 1) + img(x, y, 2)) / 3;
                 int val = (avg > 127) ? 255 : 0;
                 img(x,y,0)  = val;
