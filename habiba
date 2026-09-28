@@ -1,20 +1,12 @@
-void Grayscale(){
-  for(int i=0;i<image.width;i++){
-        for(int j=0;j<image.height;j++){
-            int avr=0;
-            for(int k=0;k<3;k++){
-                avr+=image(i,j,k);
-            }    
-                avr=avr/3;
-              for(int k=0;k<3;k++){
-                    image(i,j,k)=avr;
-                  }    
-        }
-    }    
-}
+#include <iostream>
+#include "image_class.h"
+using namespace std;
 
-void flip(){
-  Image image2(filename2);
+int main(){
+    string filename2;
+    cout<<"please, enter your emage name: "<<endl;
+    cin>>filename2;
+    Image image2(filename2);
     Image imagenew(filename2);
     cout<<"Do you want to flip it horizontally or vertically?"<<endl;
                 string type;
@@ -31,4 +23,9 @@ void flip(){
             }
         }
     }
+    string filenameout;
+    cout<<"please, enter your new image name "<<endl;
+    cin>>filenameout;
+    imagenew.saveImage(filenameout);
+    return 0;
 }
