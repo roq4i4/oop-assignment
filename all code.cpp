@@ -73,6 +73,34 @@ Image imagenew = img;
     }
     img = imagenew;
 }
+//filter6
+    void rotate_filter(Image& img) {
+    int angle;
+    cout << "Enter an angle (90, 180, 270): ";
+    cin >> angle;
+    if (angle != 90 && angle != 180 && angle != 270) {
+        cout << "Invalid angle. Please enter 90, 180, or 270." << endl;
+        return;
+    }
+    int newWidth = (angle == 180) ? img.width : img.height;
+    int newHeight = (angle == 180) ? img.height : img.width;
+    Image img2(newWidth, newHeight);
+
+    for(int x = 0; x < img.width; ++x) {
+        for (int y = 0; y < img.height; ++y) {
+            for (int c = 0; c < 3; ++c) {
+                if (angle == 90) {
+                    img2(img.height - 1 - y, x, c) = img(x, y, c);
+                } else if (angle == 180) {
+                    img2(img.width - 1 - x, img.height - 1 - y, c) = img(x, y, c);
+                } else if (angle == 270) {
+                    img2(y,img.width - 1 - x, c) = img(x, y, c);
+                }
+            }
+        }
+    }
+    img = img2;
+}    
 //filter8
 void resizeFilter(Image & img) {
 
@@ -126,6 +154,9 @@ if(choice==2)
 if(choice==5){
    flip_filter(img);
 }
+if(choice==6){
+   rotate_filter(img)     
+}        
 if (choice==8){
         resizeFilter(img);
 }        
