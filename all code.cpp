@@ -41,28 +41,17 @@ for(int i=0;i<img.width;i++){
 
 //filter3
 
-void pinkFilter(Image& img){
+void invert_image(Image& img){
 for(int i=0;i<img.height();i++){
     for(int j=0;j<img.width();j++ ){
-
-        int r=img.getPixel(i,j,0)+50;
-        int b=img.getPixel(i,j,2)+20;
-        int g=img.getPixel(i,j,1);
-
-
+            fot(int k=0;k=3;k++){
+                    img(i,j,k)=255-img(i,j,k);
+            }
+    }
+}
+}
    
-if(r>255){
-       r=255;
-    }
-if(b>255){
-       b=255;
-    }
-    img.setPixel(i,j,0,r);
-    img.setPixel(i,j,2,b);
-    img.setPixel(i,j,1,g);
-}
-}
-}
+
 
 
 //filter4
@@ -134,10 +123,23 @@ Image imagenew = img;
     img = img2;
 }   
 
-//filter 7
-void vintageFilter(Image& img){
+// Darkenlighten_filter
+void Darkenlighten_filter(Image& img){
 for(int i=0;i<img.height();i++){
     for(int j=0;j<img.width();j++ ){
+            for(int k=0;k<3;k++){
+                    if (choice=='D' ||choice=='d'){
+                    img(i,j,k)=img(i,j,k)/2}
+                    else if(choice=='L' ||choice=='l'){
+                            int newval=img(i,j,k)+255-img(i,j,k)/2;
+                            if( newval>255) newval=255;
+                            img(i,j,k)=newval;
+                    }
+            }
+    }
+}
+}
+            
 
         int r=img.getPixel(i,j,0)+30;
         int g=img.getPixel(i,j,1)+15;
