@@ -1,5 +1,6 @@
 // names:
 // Habiba mohamed abdelglil hassan , 20250192 , filter 1,5
+//Roqaia mohamed ismael, 20251149 , filter 4,8
 
 #include <iostream>
 #include "image_class.h"
