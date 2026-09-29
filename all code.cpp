@@ -133,7 +133,7 @@ void resizeFilter(Image & img) {
         }
     }
 }
-//pink fillter
+//filter3
 
 void pinkFilter(Image& img){
 for(int i=0;i<img.height();i++){
@@ -158,7 +158,7 @@ if(b>255){
 }
 }
 
-// vintage filter
+//filter 7
 void vintageFilter(Image& img){
 for(int i=0;i<img.height();i++){
     for(int j=0;j<img.width();j++ ){
