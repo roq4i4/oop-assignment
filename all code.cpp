@@ -193,8 +193,10 @@ Image img(filename);
 int choice;
 cout<<"choice a filter:  "<<endl;
   cout<<"1. grayscale\n";
+   cout<<"2.black and white\n" ;    
   cout<<"4. frame\n" ;
   cout<<"5. flip\n";
+        cout << "6.rotate";
   cout<<"8. resize\n" ;     
   cin>> choice;
 if(choice==1){
