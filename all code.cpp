@@ -44,7 +44,7 @@ for(int i=0;i<img.width;i++){
 void invert_image(Image& img){
 for(int i=0;i<img.height();i++){
     for(int j=0;j<img.width();j++ ){
-            fot(int k=0;k=3;k++){
+            for(int k=0;k<3;k++){
                     img(i,j,k)=255-img(i,j,k);
             }
     }
@@ -123,13 +123,16 @@ Image imagenew = img;
     img = img2;
 }   
 
-// Darkenlighten_filter
+//filter 7
 void Darkenlighten_filter(Image& img){
+char choice;
+cout<<"Do you want to (D)arken or (L)ighten the image?";
+cin>>choice;
 for(int i=0;i<img.height();i++){
     for(int j=0;j<img.width();j++ ){
             for(int k=0;k<3;k++){
                     if (choice=='D' ||choice=='d'){
-                    img(i,j,k)=img(i,j,k)/2}
+                    img(i,j,k)=img(i,j,k)/2;}
                     else if(choice=='L' ||choice=='l'){
                             int newval=img(i,j,k)+255-img(i,j,k)/2;
                             if( newval>255) newval=255;
