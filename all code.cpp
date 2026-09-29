@@ -210,7 +210,7 @@ cout<<"8. resize\n" ;
 if(choice==1){
    grayscale_filter(img);  
 }
-else if(choice==2)
+else if(choice==2){
    blackandwhite_filter(img);
 }  
 else if(choice==3){
@@ -235,7 +235,7 @@ else if(choice==7){
 
 }  
 else{
-       cout<< "please enter a valid number!\n"
+       cout<< "please enter a valid number!\n";
 }
         
 
