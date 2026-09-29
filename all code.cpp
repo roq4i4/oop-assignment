@@ -196,7 +196,7 @@ cout<<"choice a filter:  "<<endl;
    cout<<"2.black and white\n" ;    
   cout<<"4. frame\n" ;
   cout<<"5. flip\n";
-        cout << "6.rotate";
+        cout << "6.rotate\n";
   cout<<"8. resize\n" ;     
   cin>> choice;
 if(choice==1){
@@ -213,7 +213,7 @@ if(choice==6){
 }        
 if (choice==8){
         resizeFilter(img);
-}        
+} 
 if (choice==4){
         frameFilter(img);
 }  
