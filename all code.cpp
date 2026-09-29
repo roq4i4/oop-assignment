@@ -1,3 +1,6 @@
+// names:
+// Habiba mohamed abdelglil hassan , 20250192 , filter 1,5
+
 #include <iostream>
 #include "image_class.h"
 #include <string>
