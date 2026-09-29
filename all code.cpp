@@ -187,11 +187,11 @@ int choice;
 cout<<"choice a filter:  "<<endl;
 cout<<"1. grayscale\n";        
 cout<<"2.black and white\n" ;  
-cout<<"3.pink filter\n";       
+cout<<"3.invert_image\n";       
 cout<<"4. frame\n" ;
 cout<<"5. flip\n";
 cout <<"6.rotate\n";
-cout<<"7.vintage filter\n";        
+cout<<"7.Darkenlighten_filter\n";        
 cout<<"8. resize\n" ;     
   cin>> choice;
 if(choice==1){
@@ -201,7 +201,7 @@ else if(choice==2){
    blackandwhite_filter(img);
 }  
 else if(choice==3){
-        pinkfilter(img);
+      invert_image(img);
 } 
 else if (choice==4){
         frameFilter(img);  
@@ -214,7 +214,7 @@ else if(choice==6){
 } 
 
 else if(choice==7){
-        vintagefilter(img)
+        Darkenlighten_filter(img)
 }             
  else if (choice==8){
         resizeFilter(img);
