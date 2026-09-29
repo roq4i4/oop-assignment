@@ -225,7 +225,8 @@ string filenameout;
     cout<<"please, enter your new image name: "<<endl;
     cin>>filenameout;
 char answer;
-cout<<"do you want to save the new image? (y/n):"
+cout<<"do you want to save the new image? (y/n):";
+cin>> answer;
 if (answer =='y'|| answer=='Y'){
     img.saveImage(filenameout);
 cout << "image saved successfully!\n";
