@@ -229,12 +229,10 @@ else if(choice==6){
 
 else if(choice==7){
         vintagefilter(img)
-                }
+}             
  else if (choice==8){
         resizeFilter(img);
 } 
-
-}  
 else{
        cout<< "please enter a valid number!\n";
 }
