@@ -198,30 +198,41 @@ Image img(filename);
 //calling functoins
 int choice;
 cout<<"choice a filter:  "<<endl;
-  cout<<"1. grayscale\n";
-   cout<<"2.black and white\n" ;    
-  cout<<"4. frame\n" ;
-  cout<<"5. flip\n";
-        cout << "6.rotate\n";
-  cout<<"8. resize\n" ;     
+cout<<"1. grayscale\n";        
+cout<<"2.black and white\n" ;  
+cout<<"3.pink filter\n";       
+cout<<"4. frame\n" ;
+cout<<"5. flip\n";
+cout <<"6.rotate\n";
+cout<<"7.vintage filter\n";        
+cout<<"8. resize\n" ;     
   cin>> choice;
 if(choice==1){
    grayscale_filter(img);  
 }
-if(choice==2)
+else if(choice==2)
    blackandwhite_filter(img);
-}        
-if(choice==5){
+}  
+else if(choice==3){
+        pinkfilter(img);
+} 
+else if (choice==4){
+        frameFilter(img);  
+}
+else if(choice==5){
    flip_filter(img);
 }
-if(choice==6){
+else if(choice==6){
    rotate_filter(img)     
-}        
-if (choice==8){
+} 
+
+else if(choice==7){
+        vintagefilter(img)
+                }
+ else if (choice==8){
         resizeFilter(img);
 } 
-if (choice==4){
-        frameFilter(img);
+
 }  
 else{
        cout<< "please enter a valid number!\n"
