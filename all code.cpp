@@ -231,7 +231,7 @@ if (answer =='y'|| answer=='Y'){
     img.saveImage(filenameout);
 cout << "image saved successfully!\n";
 }else {
-        cout << "image was not saved.\n"
+        cout << "image is not saved.\n"
 }
     return 0;  
 }
