@@ -198,7 +198,7 @@ if(choice==1){
    grayscale_filter(img);  
 }
 else if(choice==2){
-   blackandwhite_filter(img);
+   blackandWhite_filter(img);
 }  
 else if(choice==3){
       invert_image(img);
