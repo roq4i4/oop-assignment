@@ -178,7 +178,7 @@ void resizeFilter(Image & img) {
 //filter 10
 class EdgeFilter {
 public:
-    void apply(Image& img) {
+    void detect(Image& img) {
         int threshold = 30 ;
         for (int x = 0; x< img.width - 1;++x){
             for (int y = 0; y < img.height; ++y) {
