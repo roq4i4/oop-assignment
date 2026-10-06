@@ -247,7 +247,8 @@ else if(choice==7){
         resizeFilter(img);
 } 
  else if (choice==10) { 
-         detect(img);
+         EdgeFilter edgeFilter;
+         edgeFilter.detect(img);
  }        
 else{
        cout<< "please enter a valid number!\n";
