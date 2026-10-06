@@ -2,10 +2,12 @@
 // Habiba mohamed abdelglil hassan - 20250192 - filter 1,5
 // Roqaia mohamed ismael - 20251149 - filter 4,8
 // Reem Hamdy Tawfik Said Alrefaay - 20250823 - filter 3,7
+// Rawan Ahmed Thabet Abd El Baset - 20250232 - filter 2,6,10,14
 
 #include <iostream>
 #include "image_class.h"
 #include <string>
+#include <cmath>
 using namespace std;
 
 // filter1
@@ -173,6 +175,30 @@ void resizeFilter(Image & img) {
     }
 }
 
+//filter 10
+class EdgeFilter {
+public:
+    void apply(Image& img) {
+        int threshold = 30 ;
+        for (int x = 0; x< img.width - 1;++x){
+            for (int y = 0; y < img.height; ++y) {
+                
+                int gray1 = (img.getPixel(x, y, 0) + img.getPixel(x, y, 1) + img.getPixel(x, y, 2)) / 3;
+                int gray2 = (img.getPixel(x + 1, y, 0) + img.getPixel(x + 1, y, 1) + img.getPixel(x + 1, y, 2)) / 3;
+                int difference = abs(gray1 - gray2);
+                if (difference > threshold) {
+                    img.setPixel(x, y, 0 , 0);
+                    img.setPixel(x, y, 1 , 0);
+                    img.setPixel(x, y, 2 , 0);
+                } else {
+                    img.setPixel(x, y, 0 , 255);
+                    img.setPixel(x, y, 1 , 255);
+                    img.setPixel(x, y, 2 , 255);
+                }   
+            }
+        }
+    }
+}; 
 
 
 // main functoin
@@ -192,7 +218,8 @@ cout<<"4. frame\n" ;
 cout<<"5. flip\n";
 cout <<"6.rotate\n";
 cout<<"7.Darkenlighten_filter\n";        
-cout<<"8. resize\n" ;     
+cout<<"8. resize\n" ;
+cout<<" 10.detect\n" ;
   cin>> choice;
 if(choice==1){
    grayscale_filter(img);  
@@ -219,6 +246,9 @@ else if(choice==7){
  else if (choice==8){
         resizeFilter(img);
 } 
+ else if (choice==10) { 
+         detect(img);
+ }        
 else{
        cout<< "please enter a valid number!\n";
 }
