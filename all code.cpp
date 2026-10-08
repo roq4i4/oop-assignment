@@ -266,6 +266,34 @@ public:
     }
 }; 
 
+
+
+
+
+// filter 11
+
+void cropImage(Image&image){
+int x,y,w,h;
+cout<<"Enter x,y (the starting point):";
+cin>>x>>y;
+cout<<"Enter the width and height for the new image";
+cin>>w>>h;
+
+Image croppedImage (w,h);
+for (int i=0;i<w;i++){
+    for(int j=0;j<h;j++){
+    for (int k=0;k<image.channels;k++){
+    croppedImage.setPixel(i,j,k,image.getPixel(x+i,y+j,k));
+    }
+
+    }
+
+    }
+    croppedImage.saveImage("cropped_jpg");
+    cout<<"Image cropped!";
+    }
+
+
 // filter 13
 void sunlight(Image& img){
     for(int i=0;i<img.width;i++){
