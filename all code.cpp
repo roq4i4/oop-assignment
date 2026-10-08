@@ -1,5 +1,5 @@
 // names:
-// Habiba mohamed abdelglil hassan - 20250192 - filter 1,5
+// Habiba mohamed abdelglil hassan - 20250192 - filter 1,5,9
 // Roqaia mohamed ismael - 20251149 - filter 4,8
 // Reem Hamdy Tawfik Said Alrefaay - 20250823 - filter 3,7
 // Rawan Ahmed Thabet Abd El Baset - 20250232 - filter 2,6,10,14
@@ -175,6 +175,72 @@ void resizeFilter(Image & img) {
     }
 }
 
+// filter 9
+void merge(Image& img , Image& img2){
+    if(img.width==img2.width && img.height==img2.height){
+        for(int i=0; i< img.width ; i++){
+            for(int j=0 ; j<img.height ; j++){
+                for(int k=0;k<3 ; k++){
+                    img(i,j,k)=(img(i,j,k) + img2(i,j,k))/2;
+                }
+            }
+        }
+    }
+    else{
+        cout<<"the sizes of two images don't match"<<endl;
+        int  the_choice;
+        cout<<"1. Resize\n";        
+        cout<<"2. Apply to Common Area\n" ; 
+        cin>> the_choice;
+
+
+        if (the_choice==1){
+            int max_w=max(img.width , img2.width);
+            int max_L=max(img.height , img2.height);
+            Image newimg2(max_w, max_L);
+
+            float stepx1 = (float)img.width / max_w;
+            float stepy1 = (float)img.height / max_L;
+
+            float stepx2 = (float)img2.width / max_w;
+            float stepy2 = (float)img2.height / max_L;
+
+            for(int i=0; i< max_w ; i++){
+                for(int j=0 ; j< max_L ; j++){
+
+                    int i1= i*stepx1;
+                    int j1= j*stepy1;
+
+                    int i2= i*stepx2;
+                    int j2= j*stepy2;
+
+                    for(int k=0; k<3 ; k++){
+                    newimg2(i,j,k) = (img(i1,j1,k) + img2(i2,j2,k))/2;
+                    }
+                }
+            }
+            img=newimg2;
+        }
+
+
+
+        if(the_choice==2){
+            int min_w=min(img.width , img2.width);
+            int min_L=min(img.height , img2.height);
+            Image newimg(min_w, min_L);
+
+            for(int i=0; i< min_w ; i++){
+                for(int j=0 ; j< min_L ; j++){
+                    for(int k=0 ; k<3 ; k++){
+                    newimg(i,j,k) = (img(i,j,k) + img2(i,j,k))/2;
+                    }
+                }
+            }
+            img=newimg;
+        }
+    }     
+}
+
 //filter 10
 class EdgeFilter {
 public:
@@ -234,6 +300,7 @@ cout<<"5. flip\n";
 cout <<"6.rotate\n";
 cout<<"7.Darkenlighten_filter\n";        
 cout<<"8. resize\n" ;
+cout<<"9.merge\n";        
 cout<<" 10.detect\n" ;
 cout<<" 14.old\n" ;       
   cin>> choice;
@@ -262,6 +329,13 @@ else if(choice==7){
  else if (choice==8){
         resizeFilter(img);
 } 
+else if (choice==9){
+    string filename2;
+    cout << "enter your second image name"<<endl;
+    cin>> filename2; 
+    Image img2(filename2);
+    merge(img , img2);     
+ }          
  else if (choice==10) { 
          EdgeFilter edgeFilter;
          edgeFilter.detect(img);
