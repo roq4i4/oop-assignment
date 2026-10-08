@@ -200,6 +200,21 @@ public:
     }
 }; 
 
+//filter 14
+class tvFilter {
+public:
+    void old(Image& img) {
+        for (int x=0; x< img.width ; x++) {
+            for (int y=0; y< img.height; y+= 2) {
+                for (int c=0; c< img.channels; c++) {
+                    int p = img.getPixel(x, y, c);
+                    img.setPixel(x, y, c, p / 2);
+                }
+            }
+        }
+    }
+};
+
 
 // main functoin
 int main(){
@@ -220,6 +235,7 @@ cout <<"6.rotate\n";
 cout<<"7.Darkenlighten_filter\n";        
 cout<<"8. resize\n" ;
 cout<<" 10.detect\n" ;
+cout<<" 14.old\n" ;       
   cin>> choice;
 if(choice==1){
    grayscale_filter(img);  
@@ -249,7 +265,13 @@ else if(choice==7){
  else if (choice==10) { 
          EdgeFilter edgeFilter;
          edgeFilter.detect(img);
- }        
+ }
+  else if (choice==14) {
+          tvFilter filter;
+          filter.old(img);
+          
+  }     
+         
 else{
        cout<< "please enter a valid number!\n";
 }
