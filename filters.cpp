@@ -6,13 +6,13 @@ int x,y,w,h;
 cout<<"Enter x,y (the starting point):";
 cin>>x>>y;
 cout<<"Enter the width and height for the new image";
-cin<<w<<h;
+cin>>w>>h;
 
 Image croppedImage (w,h);
-for (int i=0,i<w,i++){
-    for(int j=0,j<h,j++){
-    for (int k=0,k<image.channels,k++){
-    croppedImage.setpixel(i,j,k,Image.getpixel(x+i,y+j,k));
+for (int i=0;i<w;i++){
+    for(int j=0;j<h;j++){
+    for (int k=0;k<image.channels;k++){
+    croppedImage.setPixel(i,j,k,image.getPixel(x+i,y+j,k));
     }
 
     }
@@ -29,12 +29,12 @@ for (int i=0,i<w,i++){
 // filter 15
 
 void purplefilter (Image&image){
-    for(int i=0,i<image.width,i++){
-        for(int j=0,j<image.height,j++){
+    for(int i=0;i<image.width;i++){
+        for(int j=0;j<image.height;j++){
 
-        unsigned int red = image.getpixel(i,j,0);
-        unsigned int blue = image.getpivel(i,j,2);
-        unsigned int green = image.getpixel(i,j,1);
+        unsigned int red = image.getPixel(i,j,0);
+        unsigned int blue = image.getPixel(i,j,2);
+        unsigned int green = image.getPixel(i,j,1);
 
 
 
@@ -44,9 +44,13 @@ unsigned int newgreen= (green>40)? (green-40) :0 ;
 
 
 
-image.setpixel(i,j,0,newred);
-image.setpixel(i,j,1,newgreen);
-image.setpixel(i,j,2,newblue);
+image.setPixel(i,j,0,newred);
+image.setPixel(i,j,1,newgreen);
+image.setPixel(i,j,2,newblue);
+
+            
+        }
+    }
 
 image.saveImage("purple_jpg");
 cout<<"purple image saved successfully!";
