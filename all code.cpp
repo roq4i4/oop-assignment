@@ -266,6 +266,22 @@ public:
     }
 }; 
 
+// filter 13
+void sunlight(Image& img){
+    for(int i=0;i<img.width;i++){
+        for(int j=0;j<img.height;j++){
+            
+                int red= img(i,j,0)*1.20 + 10;
+                img(i,j,0)= min(255 , red);
+
+                int green= img(i,j,1)*1.05 +5;
+                img(i,j,1)= min(255 , green);
+
+                int blue= img(i,j,2)*0.8;
+                img(i,j,2)=min(255,max(0,blue));
+        }
+    }     
+}
 //filter 14
 class tvFilter {
 public:
@@ -302,6 +318,7 @@ cout<<"7.Darkenlighten_filter\n";
 cout<<"8. resize\n" ;
 cout<<"9.merge\n";        
 cout<<" 10.detect\n" ;
+cout<<"13.sunlight\n";        
 cout<<" 14.old\n" ;       
   cin>> choice;
 if(choice==1){
@@ -340,6 +357,9 @@ else if (choice==9){
          EdgeFilter edgeFilter;
          edgeFilter.detect(img);
  }
+ else if (choice==13){
+         sunlight(img);
+ }        
   else if (choice==14) {
           tvFilter filter;
           filter.old(img);
