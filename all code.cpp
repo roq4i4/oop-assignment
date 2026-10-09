@@ -272,7 +272,7 @@ public:
 
 // filter 11
 
-void cropImage(Image&image){
+void cropImage(Image&img){
 int x,y,w,h;
 cout<<"Enter x,y (the starting point):";
 cin>>x>>y;
@@ -282,15 +282,14 @@ cin>>w>>h;
 Image croppedImage (w,h);
 for (int i=0;i<w;i++){
     for(int j=0;j<h;j++){
-    for (int k=0;k<image.channels;k++){
-    croppedImage.setPixel(i,j,k,image.getPixel(x+i,y+j,k));
+    for (int k=0;k<img.channels;k++){
+    croppedImage.setPixel(i,j,k,img.getPixel(x+i,y+j,k));
     }
 
     }
 
     }
-    croppedImage.saveImage("cropped_jpg");
-    cout<<"Image cropped!";
+    
     }
 
 //filter 12
@@ -341,21 +340,46 @@ public:
     }
 };
 
+// filter 15
+
+void purplefilter (Image&img){
+    for(int i=0;i<img.width;i++){
+        for(int j=0;j<img.height;j++){
+
+        unsigned int red = img.getPixel(i,j,0);
+        unsigned int blue = img.getPixel(i,j,2);
+        unsigned int green = img.getPixel(i,j,1);
+
+
+
+unsigned int newred = red+35;
+unsigned int newblue = blue+35;
+unsigned int newgreen= (green>40)? (green-40) :0 ;
+
+
+
+img.setPixel(i,j,0,newred);
+img.setPixel(i,j,1,newgreen);
+img.setPixel(i,j,2,newblue);
+
+            
+        }
+    }
 
 
 //filter16
-void infrared(Image& image)
+void infrared(Image& img)
 {
-int width=image.width;
-int height=image.height;
+int width=img.width;
+int height=img.height;
 for (int i=0; i < height; i++){
 for (int j=0; j < width; j++){
-int r = image.getPixel(j, i, 0);
-int g = image.getPixel(j, i, 1);
- int b = image.getPixel(j, i, 2);
- image.setPixel(j, i, 0, 255);
- image.setPixel(j, i, 1, r);
- image.setPixel(j, i, 2, b / 3);
+int r = img.getPixel(j, i, 0);
+int g = img.getPixel(j, i, 1);
+ int b = img.getPixel(j, i, 2);
+ img.setPixel(j, i, 0, 255);
+ img.setPixel(j, i, 1, r);
+ img.setPixel(j, i, 2, b / 3);
         }
     }
 }
@@ -381,9 +405,11 @@ cout<<"7.Darkenlighten_filter\n";
 cout<<"8. resize\n" ;
 cout<<"9.merge\n";        
 cout<<" 10.detect\n" ;
+cout<<"11crop\n";
  cout<<"12.blur\n" ;      
 cout<<"13.sunlight\n";        
 cout<<" 14.old\n" ; 
+ cout <<"15.purple\n";      
 cout<< "16.infrared\n"
   cin>> choice;
 if(choice==1){
@@ -422,6 +448,9 @@ else if (choice==9){
          EdgeFilter edgeFilter;
          edgeFilter.detect(img);
  }
+         else if (choice==11){
+             cropImage(img)    
+         }
  else if (choice==12){ blur(img)
  }
  else if (choice==13){
@@ -431,7 +460,11 @@ else if (choice==9){
           tvFilter filter;
           filter.old(img);
           
-  }    
+  }
+          else if (choice ==15){
+                  purplefilter(img)
+                  
+          }
  else if (choice==16){
          infrared(img)
  }         
@@ -459,34 +492,4 @@ cout << "image saved successfully!\n";
 
 
 
-// filter 15
-
-void purplefilter (Image&image){
-    for(int i=0;i<image.width;i++){
-        for(int j=0;j<image.height;j++){
-
-        unsigned int red = image.getPixel(i,j,0);
-        unsigned int blue = image.getPixel(i,j,2);
-        unsigned int green = image.getPixel(i,j,1);
-
-
-
-unsigned int newred = red+35;
-unsigned int newblue = blue+35;
-unsigned int newgreen= (green>40)? (green-40) :0 ;
-
-
-
-image.setPixel(i,j,0,newred);
-image.setPixel(i,j,1,newgreen);
-image.setPixel(i,j,2,newblue);
-
-            
-        }
-    }
-
-image.saveImage("purple_jpg");
-cout<<"purple image saved successfully!";
-}
-    
 
