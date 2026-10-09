@@ -346,8 +346,8 @@ public:
 //filter16
 void infrared(Image& image)
 {
-int width=image.width();
-int height=image.height();
+int width=image.width;
+int height=image.height;
 for (int i=0; i < height; i++){
 for (int j=0; j < width; j++){
 int r = image.getPixel(j, i, 0);
