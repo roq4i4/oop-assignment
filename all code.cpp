@@ -293,6 +293,22 @@ for (int i=0;i<w;i++){
     cout<<"Image cropped!";
     }
 
+//filter 12
+    void blur(Image& img)
+    {
+        int width = img.width;
+        int height = img.height;
+ Image original = img;
+
+ for (int i = 1; i < height - 1; i++) {
+ for (int j = 1; j < width - 1; j++) {
+for (int k = 0; k < 3; k++) {
+int sum = 0;
+ for (int x = -1; x <= 1; x++){
+ for (int y = -1; y <= 1; y++) {
+ sum += original.getPixel( j + y, i + x, k );
+ } }
+ img.setPixel(j, i, k, sum / 9); } } }}
 
 // filter 13
 void sunlight(Image& img){
@@ -346,6 +362,7 @@ cout<<"7.Darkenlighten_filter\n";
 cout<<"8. resize\n" ;
 cout<<"9.merge\n";        
 cout<<" 10.detect\n" ;
+ cout<<"12.blur\n" ;      
 cout<<"13.sunlight\n";        
 cout<<" 14.old\n" ;       
   cin>> choice;
@@ -384,6 +401,8 @@ else if (choice==9){
  else if (choice==10) { 
          EdgeFilter edgeFilter;
          edgeFilter.detect(img);
+ }
+ else if (choice==12){ blur(img)
  }
  else if (choice==13){
          sunlight(img);
