@@ -342,6 +342,25 @@ public:
 };
 
 
+
+//filter16
+void infrared(Image& image)
+{
+int width=image.width();
+int height=image.height();
+for (int i=0; i < height; i++){
+for (int j=0; j < width; j++){
+int r = image.getPixel(j, i, 0);
+int g = image.getPixel(j, i, 1);
+ int b = image.getPixel(j, i, 2);
+ image.setPixel(j, i, 0, 255);
+ image.setPixel(j, i, 1, r);
+ image.setPixel(j, i, 2, b / 3);
+        }
+    }
+}
+
+
 // main functoin
 int main(){
 string filename;
@@ -364,7 +383,8 @@ cout<<"9.merge\n";
 cout<<" 10.detect\n" ;
  cout<<"12.blur\n" ;      
 cout<<"13.sunlight\n";        
-cout<<" 14.old\n" ;       
+cout<<" 14.old\n" ; 
+cout<< "16.infrared\n"
   cin>> choice;
 if(choice==1){
    grayscale_filter(img);  
@@ -411,7 +431,10 @@ else if (choice==9){
           tvFilter filter;
           filter.old(img);
           
-  }     
+  }    
+ else if (choice==16){
+         infrared(img)
+ }         
          
 else{
        cout<< "please enter a valid number!\n";
