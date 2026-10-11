@@ -3,6 +3,8 @@
 // Roqaia mohamed ismael - 20251149 - filter 4,8 ,12,16,17,18
 // Reem Hamdy Tawfik Said Alrefaay - 20250823 - filter 3,7,11,15,17,18
 // Rawan Ahmed Thabet Abd El Baset - 20250232 - filter 2,6,10,14,17,18
+// A drive that contains the document and the explanation video : https://drive.google.com/drive/folders/1QEXCXVHtn1h2pdwrg-Ps61hQz6YhcCbW
+
 
 #include <iostream>
 #include "image_class.h"
