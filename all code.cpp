@@ -423,6 +423,68 @@ void skew(Image &img)
 
     img = temp;
 }
+//filter 18
+void oilPainting(Image &img)
+{
+    Image temp = img;
+
+    int width = img.width;
+    int height = img.height;
+
+    int radius = 3;
+
+    for (int i = radius; i < height - radius; i++)
+    {
+        for (int j = radius; j < width - radius; j++)
+        {
+            int red[256] = {0};
+            int green[256] = {0};
+            int blue[256] = {0};
+
+            for (int x = -radius; x <= radius; x++)
+            {
+                for (int y = -radius; y <= radius; y++)
+                {
+                    unsigned char r, g, b;
+
+                    img(i + x, j + y, r, g, b);
+
+                    red[r]++;
+                    green[g]++;
+                    blue[b]++;
+                }
+            }
+
+            int maxR = 0, maxG = 0, maxB = 0;
+            int bestR = 0, bestG = 0, bestB = 0;
+
+            for (int k = 0; k < 256; k++)
+            {
+                if (red[k] > maxR)
+                {
+                    maxR = red[k];
+                    bestR = k;
+                }
+
+                if (green[k] > maxG)
+                {
+                    maxG = green[k];
+                    bestG = k;
+                }
+
+                if (blue[k] > maxB)
+                {
+                    maxB = blue[k];
+                    bestB = k;
+                }
+            }
+
+            temp(i, j, bestR, bestG, bestB);
+        }
+    }
+
+    img = temp;
+}
 
 
 
@@ -435,14 +497,14 @@ Image img(filename);
 
 //calling functoins
 int choice;
-cout<<"choice a filter:  "<<endl;
+cout<<"choose a filter:  "<<endl;
 cout<<"1. grayscale\n";        
 cout<<"2.black and white\n" ;  
-cout<<"3.invert_image\n";       
+cout<<"3.invert image\n";       
 cout<<"4. frame\n" ;
 cout<<"5. flip\n";
 cout <<"6.rotate\n";
-cout<<"7.Darkenlighten_filter\n";        
+cout<<"7.Darken & lighten \n";        
 cout<<"8. resize\n" ;
 cout<<"9.merge\n";        
 cout<<" 10.detect\n" ;
@@ -453,7 +515,7 @@ cout<<" 14.old\n" ;
  cout <<"15.purple\n";      
 cout<< "16.infrared\n";
  cout<< "17.skewing\n";       
-
+cout <<"18.oil painting\n"
 cin >> choice;
 
 if(choice==1){
@@ -505,7 +567,7 @@ else if (choice==9){
           filter.old(img);
           
   }
-          else if (choice ==15){
+ else if (choice ==15){
                   purplefilter(img);
                   
           }
@@ -515,6 +577,9 @@ else if (choice==9){
 else if (choice == 17){
             skew(img)
          }
+else if (choice == 18){
+                oilPainting(img)
+        }
          
 else{
        cout<< "please enter a valid number!\n";
