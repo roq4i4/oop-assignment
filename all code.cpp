@@ -421,65 +421,44 @@ void skew(Image &img){
     img = temp;
 }
 //filter 18
-void oilPainting(Image &img)
-{
+void oilPainting(Image &img){
     Image temp = img;
-
     int width = img.width;
     int height = img.height;
-
     int radius = 3;
-
-    for (int i = radius; i < height - radius; i++)
-    {
-        for (int j = radius; j < width - radius; j++)
-        {
+    for (int i = radius; i < height - radius; i++){
+        for (int j = radius; j < width - radius; j++) {
             int red[256] = {0};
             int green[256] = {0};
             int blue[256] = {0};
-
-            for (int x = -radius; x <= radius; x++)
-            {
-                for (int y = -radius; y <= radius; y++)
-                {
+            for (int x = -radius; x <= radius; x++) {
+                for (int y = -radius; y <= radius; y++){
                     unsigned char r, g, b;
-
                     img(i + x, j + y, r, g, b);
-
                     red[r]++;
                     green[g]++;
                     blue[b]++;
                 }
             }
-
             int maxR = 0, maxG = 0, maxB = 0;
             int bestR = 0, bestG = 0, bestB = 0;
-
-            for (int k = 0; k < 256; k++)
-            {
-                if (red[k] > maxR)
-                {
+            for (int k = 0; k < 256; k++) {
+                if (red[k] > maxR) {
                     maxR = red[k];
                     bestR = k;
                 }
-
-                if (green[k] > maxG)
-                {
+                if (green[k] > maxG)  {
                     maxG = green[k];
                     bestG = k;
                 }
-
-                if (blue[k] > maxB)
-                {
+                if (blue[k] > maxB) {
                     maxB = blue[k];
                     bestB = k;
                 }
             }
-
             temp(i, j, bestR, bestG, bestB);
         }
     }
-
     img = temp;
 }
 
