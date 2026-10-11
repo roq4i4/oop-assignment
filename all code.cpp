@@ -57,25 +57,35 @@ for(int i=0;i<img.height;i++){
 
 
 //filter4
-void frameFilter(Image & img) {
+void frameFilter(Image &img)
+{
+int choice;
+cout << "Choose frame type:\n";
+cout << "1. Decorated Frame\n";
+cout << "2. Normal Frame\n";
+cin >> choice;
 
-    for (int i = 0; i < img.width; i++) {
-        for (int j = 0; j < img.height; j++) {
-            for (int k = 0; k < 3; k++) {
-                if (i < 30 || img.width - 30 < i ||
-                    img.height - 30 < j || j < 30) {
-                  if (i % 2 == 0 || j % 2 == 0) {
-                        img(j,i,k) = 255;
+    for (int i=0; i < img.width; i++)
+    {for (int j =0; j < img.height; j++)
+        {if (i < 30||i >= img.width - 30 ||
+                j < 30||j >= img.height - 30)
+            {for (int k = 0; k < 3; k++)
+                { if (choice == 1)
+                    {if (i % 2 == 0 || j % 2 == 0)
+                    {img(j, i, k) = 255;}
+                        else
+                    {img(j, i, k) = 0;}
                     }
-                    else {
-                        img(j,i,k) = 0;
-                    }
+                    else if (choice == 2)
+                    {img(j, i, k) = 0;}
+                     else {cout<<"please choose a valid number!";}
                 }
             }
         }
     }
 }
 
+  
 // filter5
 void flip_filter(Image& img){
 Image imagenew = img;
