@@ -1,6 +1,6 @@
-Cairo University - FCAI
+**Cairo University - FCAI**
 
-CS213: Object Oriented Programming
+**CS213: Object Oriented Programming**
 
 Assignment #1
 
@@ -10,13 +10,13 @@ Program description : This project is a baby photoshop that allows users to appl
 
 Team members: 
 
-Roqaia Mohamed Ismael 
+• Roqaia Mohamed Ismael 
 
-Reem Hamdy Tawfik Alrefaay
+• Reem Hamdy Tawfik Alrefaay
 
-Habiba Mohamed Abdelglil Hassan
+• Habiba Mohamed Abdelglil Hassan
 
-Rawan Ahmed Thabet Abd El Baset
+• Rawan Ahmed Thabet Abd El Baset
 
 Available filters:
 
