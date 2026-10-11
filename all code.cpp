@@ -396,41 +396,28 @@ void infrared(Image& img){
     }
 }
 //filter 17 
-void skew(Image &img)
-{
+void skew(Image &img){
     int degree;
-
     cout << "Enter skew angle (1-90): ";
     cin >> degree;
-
-    if (degree < 1 || degree > 90)
-    {
+    if (degree < 1 || degree > 90) {
         cout << "Invalid angle!" << endl;
         return;
     }
-
     Image temp = img;
-
     int width = img.width;
     int height = img.height;
-
     double angle = degree * 3.14159265 / 180.0;
     double skew = tan(angle);
-
-    for (int i = 0; i < height; i++)
-    {
-        for (int j = 0; j < width; j++)
-        {
+    for (int i = 0; i < height; i++){
+        for (int j = 0; j < width; j++) {
             int shift = (height - 1 - i) * skew;
             int newX = j + shift;
-
-            if (newX >= 0 && newX < width)
-            {
+            if (newX >= 0 && newX < width) {
                 temp(i, newX) = img(i, j);
             }
         }
     }
-
     img = temp;
 }
 //filter 18
