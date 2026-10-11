@@ -15,3 +15,35 @@ Roqaia Mohamed Ismael
 Reem Hamdy Tawfik Alrefaay
 
 Habiba Mohamed Abdelglil Hassan
+
+Rawan Ahmed Thabet Abd El Baset
+
+Available filters:
+
+1. Grayscale
+2. Black and White
+3. Invert Image
+4. Adding a Frame to the Picture
+5. Flip Image
+6. Rotate Image
+7. Darken and Lighten Image
+8. Resizing Images
+9. Merge Images
+10. Detect Image Edges
+11. Crop Images
+12. Blur Image
+13. Fixing sunlight
+14. Tv filter
+15. Purple filter
+16. Red filter
+17. Image Skewing Filter
+18. Oil painting
+
+
+
+
+
+
+
+
+
