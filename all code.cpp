@@ -1,8 +1,8 @@
 // names:
-// Habiba mohamed abdelglil hassan - 20250192 - filter 1,5,9,13
-// Roqaia mohamed ismael - 20251149 - filter 4,8 ,12,16
-// Reem Hamdy Tawfik Said Alrefaay - 20250823 - filter 3,7,11,15
-// Rawan Ahmed Thabet Abd El Baset - 20250232 - filter 2,6,10,14
+// Habiba mohamed abdelglil hassan - 20250192 - filter 1,5,9,13,17,18
+// Roqaia mohamed ismael - 20251149 - filter 4,8 ,12,16,17,18
+// Reem Hamdy Tawfik Said Alrefaay - 20250823 - filter 3,7,11,15,17,18
+// Rawan Ahmed Thabet Abd El Baset - 20250232 - filter 2,6,10,14,17,18
 
 #include <iostream>
 #include "image_class.h"
@@ -385,6 +385,44 @@ void infrared(Image& img){
         }
     }
 }
+//filter 17 
+void skew(Image &img)
+{
+    int degree;
+
+    cout << "Enter skew angle (1-90): ";
+    cin >> degree;
+
+    if (degree < 1 || degree > 90)
+    {
+        cout << "Invalid angle!" << endl;
+        return;
+    }
+
+    Image temp = img;
+
+    int width = img.width;
+    int height = img.height;
+
+    double angle = degree * 3.14159265 / 180.0;
+    double skew = tan(angle);
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            int shift = (height - 1 - i) * skew;
+            int newX = j + shift;
+
+            if (newX >= 0 && newX < width)
+            {
+                temp(i, newX) = img(i, j);
+            }
+        }
+    }
+
+    img = temp;
+}
 
 
 
@@ -414,6 +452,7 @@ cout<<"13.sunlight\n";
 cout<<" 14.old\n" ; 
  cout <<"15.purple\n";      
 cout<< "16.infrared\n";
+ cout<< "17.skewing\n";       
 
 cin >> choice;
 
@@ -472,7 +511,10 @@ else if (choice==9){
           }
  else if (choice==16){
          infrared(img);
- }         
+ }
+else if (choice == 17){
+            skew(img)
+         }
          
 else{
        cout<< "please enter a valid number!\n";
