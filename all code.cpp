@@ -366,23 +366,26 @@ img.setPixel(i,j,2,newblue);
         }
     }
 
+}
 
 //filter16
-void infrared(Image& img)
-{
-int width=img.width;
-int height=img.height;
-for (int i=0; i < height; i++){
-for (int j=0; j < width; j++){
-int r = img.getPixel(j, i, 0);
-int g = img.getPixel(j, i, 1);
- int b = img.getPixel(j, i, 2);
- img.setPixel(j, i, 0, 255);
- img.setPixel(j, i, 1, r);
- img.setPixel(j, i, 2, b / 3);
+void infrared(Image& img){
+
+    int width=img.width;
+    int height=img.height;
+    for (int i=0; i < height; i++){
+        for (int j=0; j < width; j++){
+            int r = img.getPixel(j, i, 0);
+            int g = img.getPixel(j, i, 1);
+            int b = img.getPixel(j, i, 2);
+            img.setPixel(j, i, 0, 255);
+            img.setPixel(j, i, 1, r);
+            img.setPixel(j, i, 2, b / 3);
+
         }
     }
 }
+
 
 
 // main functoin
@@ -410,8 +413,10 @@ cout<<"11crop\n";
 cout<<"13.sunlight\n";        
 cout<<" 14.old\n" ; 
  cout <<"15.purple\n";      
-cout<< "16.infrared\n"
-  cin>> choice;
+cout<< "16.infrared\n";
+
+cin >> choice;
+
 if(choice==1){
    grayscale_filter(img);  
 }
@@ -449,9 +454,9 @@ else if (choice==9){
          edgeFilter.detect(img);
  }
          else if (choice==11){
-             cropImage(img)    
+             cropImage(img);
          }
- else if (choice==12){ blur(img)
+ else if (choice==12){ blur(img);
  }
  else if (choice==13){
          sunlight(img);
@@ -462,11 +467,11 @@ else if (choice==9){
           
   }
           else if (choice ==15){
-                  purplefilter(img)
+                  purplefilter(img);
                   
           }
  else if (choice==16){
-         infrared(img)
+         infrared(img);
  }         
          
 else{
@@ -486,7 +491,7 @@ if (answer =='y'|| answer=='Y'){
 cout << "image saved successfully!\n";
 }else {
         cout << "image is not saved.\n";
-}
+} 
     return 0;  
 }
 
