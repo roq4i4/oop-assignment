@@ -42,10 +42,17 @@ Available filters:
 
 
 **Work division**
+
+
 • roqaia (4,8,12,16)
-• reem
-•
-•
+
+• reem (3,7,11,15)
+
+• habiba (1,5,9,13)
+
+• rawan (2,6,10,14)
+
+(Repo, Menu and filters 17,18 are common between all members)
 
 
 
