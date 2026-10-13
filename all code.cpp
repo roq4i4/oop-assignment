@@ -12,6 +12,7 @@
 #include "image_class.h"
 #include <string>
 #include <cmath>
+
 using namespace std;
 
 // filter1
@@ -173,6 +174,7 @@ void resizeFilter(Image & img) {
 
     cout<<"Enter new height: ";
     cin>>newHeight;
+        if (newHieght<=0||newWidth<=0){cout<<"enter a valid dimensions"<<endl;}
 
     Image resized(newWidth, newHeight);
 
@@ -183,10 +185,11 @@ void resizeFilter(Image & img) {
             int Y = j * img.height / newHeight;
 
             for (int k = 0; k < 3; k++) {
-                resized(j, i, k) = img(Y, X, k);
+                resized(i, j, k) = img(X, Y, k);
             }
         }
     }
+        img=resized;
 }
 
 // filter 9
