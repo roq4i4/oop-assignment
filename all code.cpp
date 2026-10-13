@@ -6,6 +6,8 @@
 // A drive that contains the document and the explanation video : https://drive.google.com/drive/folders/1QEXCXVHtn1h2pdwrg-Ps61hQz6YhcCbW
 
 
+
+
 #include <iostream>
 #include "image_class.h"
 #include <string>
@@ -411,12 +413,14 @@ void skew(Image &img){
     int height = img.height;
     double angle = degree * 3.14159265 / 180.0;
     double skew = tan(angle);
-    for (int i = 0; i < height; i++){
+    for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             int shift = (height - 1 - i) * skew;
             int newX = j + shift;
             if (newX >= 0 && newX < width) {
-                temp(i, newX) = img(i, j);
+                for (int c = 0; c < img.channels; c++) {
+                    temp.setPixel(newX, i, c, img.getPixel(j, i, c));
+                }
             }
         }
     }
@@ -435,8 +439,11 @@ void oilPainting(Image &img){
             int blue[256] = {0};
             for (int x = -radius; x <= radius; x++) {
                 for (int y = -radius; y <= radius; y++){
-                    unsigned char r, g, b;
-                    img(i + x, j + y, r, g, b);
+                    int px = j + y;
+                    int py = i + x;
+                    unsigned char r = img.getPixel(px, py, 0);
+                    unsigned char g = img.getPixel(px, py, 1);
+                    unsigned char b = img.getPixel(px, py, 2);
                     red[r]++;
                     green[g]++;
                     blue[b]++;
@@ -458,7 +465,9 @@ void oilPainting(Image &img){
                     bestB = k;
                 }
             }
-            temp(i, j, bestR, bestG, bestB);
+            temp.setPixel(j, i, 0, bestR);
+            temp.setPixel(j, i, 1, bestG);
+            temp.setPixel(j, i, 2, bestB);
         }
     }
     img = temp;
@@ -493,7 +502,7 @@ cout<<" 14.old\n" ;
  cout <<"15.purple\n";      
 cout<< "16.infrared\n";
  cout<< "17.skewing\n";       
-cout <<"18.oil painting\n"
+cout <<"18.oil painting\n";
 cin >> choice;
 
 if(choice==1){
@@ -553,10 +562,10 @@ else if (choice==9){
          infrared(img);
  }
 else if (choice == 17){
-            skew(img)
+            skew(img);
          }
 else if (choice == 18){
-                oilPainting(img)
+                oilPainting(img);
         }
          
 else{
@@ -579,7 +588,3 @@ cout << "image saved successfully!\n";
 } 
     return 0;  
 }
-
-
-
-
