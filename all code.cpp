@@ -174,7 +174,7 @@ void resizeFilter(Image & img) {
 
     cout<<"Enter new height: ";
     cin>>newHeight;
-if ( newHieght<=0|| newWidth<=0){cout<<"enter a valid dimensions"<<endl;}
+if ( newHeight<=0|| newWidth<=0){cout<<"enter a valid dimensions"<<endl;}
 
     Image resized(newWidth, newHeight);
 
