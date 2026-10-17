@@ -49,8 +49,8 @@ for(int i=0;i<img.width;i++){
 //filter3
 
 void invert_image(Image& img){
-for(int i=0;i<img.height;i++){
-    for(int j=0;j<img.width;j++ ){
+for(int i=0;i<img.width;i++){
+    for(int j=0;j<img.height;j++ ){
             for(int k=0;k<3;k++){
                     img(i,j,k)=255-img(i,j,k);
             }
@@ -145,8 +145,8 @@ void Darkenlighten_filter(Image& img){
 char choice;
 cout<<"Do you want to (D)arken or (L)ighten the image?";
 cin>>choice;
-for(int i=0;i<img.height;i++){
-    for(int j=0;j<img.width;j++ ){
+for(int i=0;i<img.width;i++){
+    for(int j=0;j<img.height;j++ ){
             for(int k=0;k<3;k++){
                     if (choice=='D' ||choice=='d'){
                     img(i,j,k)=img(i,j,k)/2;}
@@ -158,6 +158,7 @@ for(int i=0;i<img.height;i++){
             }
     }
 }
+        img=croppedImage;
 }
             
 
