@@ -158,7 +158,7 @@ for(int i=0;i<img.width;i++){
             }
     }
 }
-        img=croppedImage;
+       
 }
             
 
@@ -307,7 +307,7 @@ for (int i=0;i<w;i++){
     }
 
     }
-    
+     img=croppedImage;
     }
 
 //filter 12
