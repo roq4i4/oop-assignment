@@ -259,7 +259,7 @@ void merge(Image& img , Image& img2){
 class EdgeFilter {
 public:
     void detect(Image& img) {
-        int threshold = 30 ;
+        int threshold = 20 ;
         for (int x = 0; x< img.width - 1;++x){
             for (int y = 0; y < img.height-1; ++y) {
                 
