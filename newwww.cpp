@@ -261,10 +261,10 @@ public:
     void detect(Image& img) {
         int threshold = 30 ;
         for (int x = 0; x< img.width - 1;++x){
-            for (int y = 0; y < img.height; ++y) {
+            for (int y = 0; y < img.height-1; ++y) {
                 
                 int gray1 = (img.getPixel(x, y, 0) + img.getPixel(x, y, 1) + img.getPixel(x, y, 2)) / 3;
-                int gray2 = (img.getPixel(x + 1, y, 0) + img.getPixel(x + 1, y, 1) + img.getPixel(x + 1, y, 2)) / 3;
+                int gray2 = (img.getPixel(x + 1, y+1, 0) + img.getPixel(x + 1, y+1, 1) + img.getPixel(x + 1, y+1, 2)) / 3;
                 int difference = abs(gray1 - gray2);
                 if (difference > threshold) {
                     img.setPixel(x, y, 0 , 0);
